@@ -39,7 +39,7 @@ for(i=0;len>i;i++){
     var amount = data.product[i].amount;
     var link = data.product[i].link;
     var image = data.product[i].image;
-     var product_list ='<li id="item'+i+'" class="book"><a href="'+link+'"><img src="'+image+'" width="200"/></a><h2>'+name+'</h2><p class="price">價格:'+price+'元</p><p class="amount">尚餘數量:'+amount+'</p><p class="add"><select>';;
+     var product_list ='<li id="item'+i+'" class="book"><a href="'+link+'"><img src="'+image+'" width="100"  /></a><h2>'+name+'</h2><p class="price">價格:'+price+'元</p><p class="amount">尚餘數量:'+amount+'</p><p class="add"><select>';;
     for(x=1;x<amount+1;x++){
         product_list = product_list+'<option value="'+x+'">'+x+'</option>'; 
     }
@@ -88,6 +88,6 @@ $(this).closest('tr').remove();
 });
     $('.store').on('click','#clear',function(){
         $('.shopcart tbody,.total').html(' ');
-        
+        sum=0;
 
         });
