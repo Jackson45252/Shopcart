@@ -25,29 +25,32 @@ data = {
         amount: 8
     }],
     shopcart:[{
-        name:'',price:'',amount:''}
+        name:'123',
+        price:'',
+        amount:''}
         ]
 };
 /*商品列表*/
 list_build();
-function list_build(){
-var len = data.product.length;
+alert(data.shopcart[0].name);
+    function list_build(){
+    var len = data.product.length;
 
-for(i=0;len>i;i++){
-    var name= data.product[i].name;
-    var price = data.product[i].price;
-    var amount = data.product[i].amount;
-    var link = data.product[i].link;
-    var image = data.product[i].image;
-     var product_list ='<li id="item'+i+'" class="book"><a href="'+link+'"><img src="'+image+'" width="100"  /></a><h2>'+name+'</h2><p class="price">價格:'+price+'元</p><p class="amount">尚餘數量:'+amount+'</p><p class="add"><select>';;
-    for(x=1;x<amount+1;x++){
+    for(i=0;len>i;i++){
+        var name= data.product[i].name;
+        var price = data.product[i].price;
+        var amount = data.product[i].amount;
+        var link = data.product[i].link;
+        var image = data.product[i].image;
+         var product_list ='<li id="item'+i+'" class="book"><a href="'+link+'"><img src="'+image+'" width="100"  /></a><h2>'+name+'</h2><p class="price">價格:'+price+'元</p><p class="amount">尚餘數量:'+amount+'</p><p class="add"><select>';;
+        for(x=1;x<amount+1;x++){
         product_list = product_list+'<option value="'+x+'">'+x+'</option>'; 
     }
    
-  $('.product').append(product_list+'</select><button class="add_cart">加入購物車</button></p></li>');
+    $('.product').append(product_list+'</select><button class="add_cart">加入購物車</button></p></li>');
 
-}
-};
+    }
+    };
 
 /*按鈕功能*/
         
@@ -73,12 +76,13 @@ for(i=0;len>i;i++){
                 $('.total').html('$'+sum);
             });
 
+        /*顯示/隱藏購物車列表*/
     $('#show_cart').on('click',function(){
 
         $('.shopcart').toggle();
 
         });
-
+/*移除購物車列表項目*/
 $('.shopcart').on('click','.remove',function(){
  sum= sum-$(this).parent().prev().html();
 $('.total').html('$'+sum);
@@ -86,6 +90,7 @@ $(this).closest('tr').remove();
 
 
 });
+/*清空購物車*/
     $('.store').on('click','#clear',function(){
         $('.shopcart tbody,.total').html(' ');
         sum=0;
