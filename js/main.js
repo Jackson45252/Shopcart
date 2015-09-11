@@ -30,7 +30,7 @@ data = {
 };
 /*商品列表*/
 list_build();
-function list_build(e){
+function list_build(){
 var len = data.product.length;
 
 for(i=0;len>i;i++){
@@ -50,27 +50,37 @@ for(i=0;len>i;i++){
 };
 
 /*按鈕功能*/
-var sum=0;
-$('li .add_cart').on('click',function(){
+        
+        /*加入購物車*/
+        var sum=0;
+        var left= [];
+        $('.store').on('click','li .add_cart',function(){
 
-    var index = $(this).closest('li').index();
-    var name= data.product[index].name+'</td>';
-    var price = data.product[index].price;
-    var amount = $(this).prev().find(':selected').val();
-    var value= price*amount;
-    var link = data.product[index].link;
-    var image = data.product[index].image;
     
-    var cart_list = ('<tr><td>'+name+'</td><td>'+price+'</td><td>'+amount+'</td><td>'+value+'</td><td><a href="#" class="remove">移除項目</a></td></tr>')
-$('.shopcart tbody').append(cart_list);
+            var index = $(this).closest('li').index();
+            var name= data.product[index].name+'</td>';
+            var price = data.product[index].price;
+            var amount = $(this).prev().find(':selected').val();
+            var value= price*amount;
+           left[index]= data.product[index].amount;
+           /* left[index] =  left[index] -amount;
+  $(this).parent().prev('.amount').html('尚餘數量:'+left);*/
+    
+            var cart_list = ('<tr><td>'+name+'</td><td>'+price+'</td><td>'+amount+'</td><td>'+value+'</td><td><a href="#" class="remove">移除項目</a></td></tr>')
+             $('.shopcart tbody').append(cart_list);
+             /*購物車總額*/
+                sum = sum+value;
+                $('.total').html('$'+sum);
+            });
 
-sum = sum+value;
-$('.total').html('$'+sum);
+    $('#show_cart').on('click',function(){
 
-});
+        $('.shopcart').toggle();
 
-$('#show_cart').on('click',function(){
-$('.shopcart').toggle();
+        });
 
-});
+    $('.store').on('click','#clear',function(){
+        $('.shopcart tbody,.total').html(' ');
+        
 
+        });
