@@ -62,11 +62,11 @@ for(i=0;len>i;i++){
             var price = data.product[index].price;
             var amount = $(this).prev().find(':selected').val();
             var value= price*amount;
-           left[index]= data.product[index].amount;
-           /* left[index] =  left[index] -amount;
+            /* data.shopcart[index].amount = ;
+          left[index] =  left[index] -amount;
   $(this).parent().prev('.amount').html('尚餘數量:'+left);*/
     
-            var cart_list = ('<tr><td>'+name+'</td><td>'+price+'</td><td>'+amount+'</td><td>'+value+'</td><td><a href="#" class="remove">移除項目</a></td></tr>')
+            var cart_list = ('<tr><td>'+name+'</td><td>'+price+'</td><td>'+amount+'</td><td class="value">'+value+'</td><td><a href="#" class="remove">移除項目</a></td></tr>')
              $('.shopcart tbody').append(cart_list);
              /*購物車總額*/
                 sum = sum+value;
@@ -79,6 +79,13 @@ for(i=0;len>i;i++){
 
         });
 
+$('.shopcart').on('click','.remove',function(){
+ sum= sum-$(this).parent().prev().html();
+$('.total').html('$'+sum);
+$(this).closest('tr').remove();
+
+
+});
     $('.store').on('click','#clear',function(){
         $('.shopcart tbody,.total').html(' ');
         
