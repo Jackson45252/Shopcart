@@ -12,16 +12,21 @@
 </head>
 <body>
 	<div class="product"></div>
+
+	<button id="show_cart">顯示購物車清單</button>
 	<div class="shopcart">
-		<table><tr>
-		<td>書名</td>
-		<td>單價</td>
-		<td>數量</td>
-		<td>小計</td>
-		<td>取消</td>
+		<table><thead>
+			<tr>
+		<th>書名</th>
+		<th>單價</th>
+		<th>數量</th>
+		<th>小計</th>
+		<th>取消</th>
+		<tbody></tbody>
 	</tr>
+	</thead>
 </table>
-	<p>清空購物車 購物金額總計:</p>
+	<p><button id="clear">清空購物車</button> 購物金額總計:<span class="total"></span></p>
 </div>
 </body>
 <script type="text/javascript" src="js/main.js"></script>
