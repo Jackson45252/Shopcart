@@ -25,14 +25,14 @@ data = {
         amount: 8
     }],
     shopcart:[{
-        name:'123',
+        name:'',
         price:'',
         amount:''}
         ]
 };
 /*商品列表*/
 list_build();
-alert(data.shopcart[0].name);
+
     function list_build(){
     var len = data.product.length;
 
